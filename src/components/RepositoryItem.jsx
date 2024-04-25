@@ -1,18 +1,108 @@
-import { Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
+import theme from "../theme";
+import Text from './Text';
 
 const RepositoryItem = ({ repository }) => {
     return (
-        <View>
-            <Text>Fullname: {repository.fullName}</Text>
-            <Text>Description: {repository.description}</Text>
-            <Text>Language: {repository.language}</Text>
-            <Text>Stars: {repository.stars}</Text>
-            <Text>Forks: {repository.forks}</Text>
-            <Text>Reviews: {repository.reviewCount}</Text>
-            <Text>Rating: {repository.ratingAverage}</Text>
+        <View style={styles.container}>
+            <View style={styles.top}>
+                <Image src={repository.ownerAvatarUrl} style={styles.avatar}/>  
+
+                <View style={styles.ownerInfo}>
+                    <Text fontWeight="bold">{repository.fullName}</Text>
+                    <Text style={styles.repoDescription}>{repository.description}</Text>
+
+                    <View>
+                        <Text style={styles.language}>{repository.language}</Text>
+                    </View>
+                </View>
+            </View>
+
+            <View style={styles.bottom}>
+                <View>
+                    <Text fontWeight="bold" style={styles.infoNumber}>
+                        {
+                            repository.stargazersCount >= 1000 ?
+                            (repository.stargazersCount / 1000).toFixed(1) + 'k' :
+                            repository.stargazersCount
+                        }
+                </Text>
+                    <Text style={styles.infoTopic}>Stars</Text>
+                </View>
+
+                <View>
+                    <Text fontWeight="bold" style={styles.infoNumber}>
+                        {
+                            repository.forksCount >= 1000 ?
+                            (repository.forksCount / 1000).toFixed(1) + 'k' :
+                            repository.forksCount
+                        }
+                        </Text>
+                    <Text style={styles.infoTopic}>Forks</Text>
+                </View>
+
+                <View>
+                    <Text fontWeight="bold" style={styles.infoNumber}>{repository.reviewCount}</Text>
+                    <Text style={styles.infoTopic}>Reviews</Text>
+                </View>
+
+                <View>
+                    <Text fontWeight="bold" style={styles.infoNumber}>{repository.ratingAverage}</Text>
+                    <Text style={styles.infoTopic}>Rating</Text>
+                </View>
+            </View>
         </View>
     );
 
 }
+
+const styles = StyleSheet.create({
+    container:{
+        padding: 20
+    },
+
+    top:{
+        display: 'flex',
+        flexDirection: 'row'
+    },
+
+    avatar:{
+        width: 50,
+        height: 50,
+        borderRadius: 7
+    },
+
+    ownerInfo:{
+        marginLeft: 15,
+        flex: 1
+    },
+
+    repoDescription: {
+        marginVertical: 15
+    },
+
+    language: {
+        backgroundColor: theme.colors.primary,
+        color: theme.colors.textSecondary,
+        padding: 7,
+        borderRadius: 5,
+        alignSelf: 'flex-start'
+    },
+
+    bottom: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 20
+    },
+
+    infoNumber: {
+        textAlign: 'center'
+    },
+
+    infoTopic: {
+        color: theme.colors.grey
+    }
+})
 
 export default RepositoryItem;
