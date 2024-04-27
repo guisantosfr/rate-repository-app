@@ -3,6 +3,7 @@ const theme = {
       textPrimary: '#010101',
       textSecondary: '#fefefe',
       primary: '#0366d6',
+      mainBackground: '#e1e4e8',
       background: '#24292e',
       lightGray: "#eee",
       darkGray: "#777"
