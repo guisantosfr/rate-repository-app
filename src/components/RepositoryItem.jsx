@@ -58,6 +58,7 @@ const RepositoryItem = ({ repository }) => {
 
 const styles = StyleSheet.create({
     container:{
+        backgroundColor: theme.colors.secondaryBackground,
         padding: 20
     },
 
