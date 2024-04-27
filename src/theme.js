@@ -1,11 +1,11 @@
 const theme = {
     colors: {
-      textPrimary: '#24292e',
+      textPrimary: '#010101',
       textSecondary: '#fefefe',
       primary: '#0366d6',
       background: '#24292e',
-      gray: "#eee",
-      grey: "#777"
+      lightGray: "#eee",
+      darkGray: "#777"
     },
 
     fontSizes: {

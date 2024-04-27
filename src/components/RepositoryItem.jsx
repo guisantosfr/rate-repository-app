@@ -9,7 +9,7 @@ const RepositoryItem = ({ repository }) => {
                 <Image src={repository.ownerAvatarUrl} style={styles.avatar}/>  
 
                 <View style={styles.ownerInfo}>
-                    <Text fontWeight="bold">{repository.fullName}</Text>
+                    <Text fontWeight="bold" fontSize="subheading">{repository.fullName}</Text>
                     <Text style={styles.repoDescription}>{repository.description}</Text>
 
                     <View>
@@ -78,13 +78,13 @@ const styles = StyleSheet.create({
     },
 
     repoDescription: {
-        marginVertical: 15
+        marginVertical: 10
     },
 
     language: {
         backgroundColor: theme.colors.primary,
         color: theme.colors.textSecondary,
-        padding: 7,
+        padding: 5,
         borderRadius: 5,
         alignSelf: 'flex-start'
     },
@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
     },
 
     infoTopic: {
-        color: theme.colors.grey
+        textAlign: 'center',
+        color: theme.colors.darkGray
     }
 })
 
