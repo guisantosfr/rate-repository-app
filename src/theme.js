@@ -7,7 +7,8 @@ const theme = {
       secondaryBackground: '#fefefe',
       background: '#24292e',
       lightGray: "#eee",
-      darkGray: "#777"
+      darkGray: "#777",
+      error: '#d73a4a'
     },
 
     fontSizes: {

@@ -1,7 +1,14 @@
-import { TextInput, Pressable, View, StyleSheet } from 'react-native';
+import { Pressable, View, StyleSheet } from 'react-native';
 import { useFormik } from 'formik';
+import * as yup from 'yup';
+
+const validationSchema = yup.object().shape({
+  username: yup.string().required('Username is required'),
+  password: yup.string().required('Password is required')
+})
 
 import Text from './Text';
+import TextInput from './TextInput';
 import theme from '../theme';
 
 const initialValues = {
@@ -12,6 +19,7 @@ const initialValues = {
 const SignInForm = ({ onSubmit }) => {
   const formik = useFormik({
     initialValues,
+    validationSchema,
     onSubmit
   });
 
@@ -23,7 +31,13 @@ const SignInForm = ({ onSubmit }) => {
         value={formik.values.username}
         onChangeText={formik.handleChange('username')}
         style={styles.input}
+        error={formik.touched.username && formik.errors.username}
       />
+      {
+        formik.touched.username && formik.errors.username && (
+          <Text style={{ color: theme.colors.error }}>{formik.errors.username}</Text>
+        )
+      }
 
       <TextInput
         placeholder='Password'
@@ -31,7 +45,13 @@ const SignInForm = ({ onSubmit }) => {
         onChangeText={formik.handleChange('password')}
         secureTextEntry
         style={styles.input}
+        error={formik.touched.password && formik.errors.password}
       />
+      {
+        formik.touched.password && formik.errors.password && (
+          <Text style={{ color: theme.colors.error }}>{formik.errors.password}</Text>
+        )
+      }
 
       <Pressable onPress={formik.handleSubmit} style={styles.button}>
         <Text color="textSecondary" fontWeight="bold">Sign in</Text>
@@ -82,6 +102,10 @@ const styles = StyleSheet.create({
 
     display: 'flex',
     alignItems: 'center'
+  },
+
+  error:{
+    borderColor: theme.colors.error
   }
 
 })
