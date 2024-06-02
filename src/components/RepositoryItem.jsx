@@ -4,7 +4,7 @@ import Text from './Text';
 
 const RepositoryItem = ({ repository }) => {
     return (
-        <View style={styles.container}>
+        <View style={styles.container} testID="repositoryItem">
             <View style={styles.top}>
                 <Image src={repository.ownerAvatarUrl} style={styles.avatar}/>  
 
